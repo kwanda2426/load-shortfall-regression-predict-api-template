@@ -60,8 +60,7 @@ def _preprocess_data(data):
     # ---------------------------------------------------------------
 
     # ----------- Replace this code with your own preprocessing steps --------
-    predict_vector = feature_vector_df[['Pickup Lat','Pickup Long',
-                                        'Destination Lat','Destination Long']]
+    predict_vector = feature_vector_df[['Madrid_wind_speed','Bilbao_rain_1hr','Valencia_wind_speed']]
     
     
 
