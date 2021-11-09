@@ -25,9 +25,8 @@ import numpy as np
 # Load data from file to send as an API POST request.
 # We prepare a DataFrame with the public test set + riders data
 # from the Zindi challenge.
-test = pd.read_csv('data/test_data.csv')
-riders = pd.read_csv('data/riders.csv')
-test = test.merge(riders, how='left', on='Rider Id')
+test = pd.read_csv('data/df_test.csv')
+
 
 # Convert our DataFrame to a JSON string.
 # This step is necessary in order to transmit our data via HTTP/S
