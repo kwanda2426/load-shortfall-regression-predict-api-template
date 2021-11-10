@@ -60,32 +60,26 @@ def _preprocess_data(data):
     # ---------------------------------------------------------------
 
     # ----------- Replace this code with your own preprocessing steps --------
-    predict_vector = feature_vector_df[['time', 'Madrid_wind_speed', 'Madrid_humidity',
-       'Madrid_temp']]
+    predict_vector = feature_vector_df[['time', 'Madrid_wind_speed', 'Valencia_wind_deg', 'Valencia_wind_speed',
+       'Seville_humidity', 'Madrid_humidity', 'Bilbao_clouds_all',
+       'Bilbao_wind_speed', 'Seville_clouds_all', 'Barcelona_wind_speed',
+       'Madrid_clouds_all', 'Seville_wind_speed', 'Seville_pressure',
+       'Bilbao_snow_3h', 'Seville_rain_3h', 'Barcelona_rain_3h',
+       'Valencia_snow_3h', 'Madrid_weather_id', 'Barcelona_weather_id',
+       'Seville_weather_id', 'Valencia_temp', 'Bilbao_weather_id',
+       'Seville_temp', 'Valencia_humidity', 'Barcelona_temp', 'Bilbao_temp',
+       'Madrid_temp', 'load_shortfall_3h']]
     
-    df_1 = predict_vector.copy()
+    # take columns with Madrid
+    cols = [col for col in predict_vector.columns if 'Madrid' in col]
     
-    df_1['time'] = pd.to_datetime(df_1['time']) # changing the date datatype
+    # take Madrid data 
     
-    
-    
-    df_1['month'] = df_1['time'].dt.month
-    
-    df_1['day'] = df_1['time'].dt.day
-    
-    df_1['time'] = df_1['time'].dt.time
-    
-    df_1['time'] = df_1['time'].astype('category')
-
-    df_1['time'] = df_1['time'].cat.codes
-    
-   
-
-    
+    df_x = predict_vector[cols]
 
     # ------------------------------------------------------------------------
 
-    return df_1
+    return df_x
 
 def load_model(path_to_model:str):
     """Adapter function to load our pretrained model into memory.
