@@ -75,11 +75,11 @@ def _preprocess_data(data):
     
     # take Madrid data 
     
-    df_x = predict_vector[cols]
+    predict_vector = predict_vector[cols]
 
     # ------------------------------------------------------------------------
 
-    return df_x
+    return predict_vector
 
 def load_model(path_to_model:str):
     """Adapter function to load our pretrained model into memory.
