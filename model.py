@@ -60,11 +60,11 @@ def _preprocess_data(data):
     # ---------------------------------------------------------------
 
     # ----------- Replace this code with your own preprocessing steps --------
-    predict_vector = feature_vector_df[['time', 'Madrid_wind_speed', 'Valencia_wind_speed','Madrid_humidity',
-                                        'Madrid_weather_id','Seville_temp','Madrid_temp', 'load_shortfall_3h']]
+    predict_vector = feature_vector_df[['Valencia_pressure','Madrid_wind_speed', 'Valencia_wind_speed','Madrid_humidity',
+                                        'Madrid_weather_id','Seville_temp','Madrid_temp']]
     
     # drop non-useful column
-    predict_vector = predict_vector.drop(['time','load_shortfall_3h'], axis = 1)
+    predict_vector['Valencia_pressure'] = predict_vector['Valencia_pressure'].fillna(value = 0)
     
     
     
